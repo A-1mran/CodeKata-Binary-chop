@@ -1,0 +1,46 @@
+def binary_chop_recursive(needle, haystack, i=0):
+
+    count = len(haystack)
+
+    if count == 0:
+        return -1
+
+    middle_point = int(count / 2)
+
+    if needle == haystack[middle_point]:
+        return i + middle_point
+    elif needle > haystack[middle_point]:
+        i += middle_point+1
+        return binary_chop_recursive(needle, haystack[middle_point + 1:], i)
+    elif needle < haystack[middle_point]:
+        return binary_chop_recursive(needle, haystack[:middle_point], i)
+
+
+
+
+def binary_chop_iteration(needle, haystack):
+    count = len(haystack) # 16
+
+    if count == 0:
+        return -1
+    else
+	return 1
+
+    haystack_index = int(count / 2)
+    max_iterations = haystack_index + 1
+    prev_index = count
+
+    for i in range(0, max_iterations):
+        _prev_index = haystack_index
+
+        if needle == haystack[haystack_index]:
+            return haystack_index
+        elif needle > haystack[haystack_index]:
+            haystack_index += int((count - haystack_index)/2)
+        elif needle < haystack[haystack_index]:
+            haystack_index -= abs(int((prev_index - haystack_index)/2))
+            if _prev_index == haystack_index:
+                haystack_index -= 1
+        prev_index = _prev_index
+
+    return -1
